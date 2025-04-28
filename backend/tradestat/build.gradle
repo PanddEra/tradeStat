@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '3.4.4'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'java'
+}
+
+group = 'trading'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// Spring Boot Starter Web (REST API)
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Spring Boot JPA (для роботи з базами даних)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Драйвер для MySQL
+	implementation 'mysql:mysql-connector-java:8.0.33'
+
+	// DevTools для швидкої розробки
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Lombok (спрощує роботу з моделями)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Spring Boot Starter Test (тестування)
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'org.apache.poi:poi:5.2.3'
+	implementation 'org.apache.poi:poi-ooxml:5.2.3'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
